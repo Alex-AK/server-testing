@@ -16,7 +16,13 @@ describe('users model', () => {
     expect(user.username).toBe('admin');
   });
 
-  it('should delete selected user', () => {
-    console.log('delete');
+  it('should delete selected user', async () => {
+    const user = await users.add({
+      username: 'admin'
+    });
+    expect(user.username).toBe('admin');
+
+    const deleted = await users.remove({ id: 1 });
+    expect(deleted).toBe(null);
   });
 });
