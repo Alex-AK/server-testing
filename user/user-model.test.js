@@ -23,6 +23,6 @@ describe('users model', () => {
     expect(user.username).toBe('admin');
 
     const deleted = await users.remove({ id: 1 });
-    expect(deleted).toBe(null);
+    expect(deleted).toBe(undefined);
   });
 });

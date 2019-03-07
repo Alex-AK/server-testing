@@ -21,8 +21,8 @@ describe('add user', () => {
 });
 
 describe('delete user ', () => {
-  it('returns status code 202 Accepted', () => {
-    console.log('delete user');
+  it.skip('returns status code 202 Accepted', async () => {
+    const res = await request(server).delete({});
   });
 
   it('returns status json', () => {

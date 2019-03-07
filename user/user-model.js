@@ -26,6 +26,8 @@ async function add(user) {
 }
 
 // delete
-function remove() {
-  return null;
+function remove(id) {
+  db('users')
+    .where({ id })
+    .delete();
 }
