@@ -3,7 +3,8 @@ const db = require('../data/dbConfig');
 module.exports = {
   add,
   remove,
-  getAll
+  getAll,
+  get
 };
 
 // get all
@@ -16,10 +17,12 @@ function get(id) {
 }
 // create
 
-function add(user) {
+async function add(user) {
+  const [id] = await db('users').insert(user);
+
   return db('users')
-    .insert(user)
-    .then(id => get(id));
+    .where({ id })
+    .first();
 }
 
 // delete

@@ -2,9 +2,9 @@ const request = require('supertest');
 
 const server = require('./user-routes');
 
-describe('add user', () => {
+describe('add user', async () => {
   it('returns status code 201 OK', () => {
-    console.log('add user');
+    console.log('add');
   });
 
   it('returns status json', () => {
