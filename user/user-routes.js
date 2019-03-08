@@ -30,17 +30,19 @@ router.post('/', async (req, res) => {
 });
 
 // delete
-
-module.exports = router;
-router.post('/', async (req, res) => {
+router.delete('/:id', async (req, res) => {
   try {
-    const hub = await Hubs.add(req.body);
-    res.status(201).json(hub);
+    const id = req.params.id;
+    const count = await db.remove(id);
+
+    if (count > 0) {
+      res.status(202).json({ message: 'User deleted.' });
+    } else {
+      res.status(404).json({ message: 'The user could not be found' });
+    }
   } catch (error) {
-    // log error to database
-    console.log(error);
-    res.status(500).json({
-      message: 'Error adding the hub'
-    });
+    res.status(500).json({ message: 'error removing user' });
   }
 });
+
+module.exports = router;

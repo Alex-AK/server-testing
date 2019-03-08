@@ -6,7 +6,6 @@ describe('users model', () => {
   afterEach(async () => {
     await db('users').truncate();
   });
-
   it('should add provided user', async () => {
     // de-structure id
     const user = await users.add({
@@ -16,6 +15,7 @@ describe('users model', () => {
     expect(user.username).toBe('admin');
   });
 
+  // model now returns
   it('should delete selected user', async () => {
     const user = await users.add({
       username: 'admin'
@@ -23,6 +23,6 @@ describe('users model', () => {
     expect(user.username).toBe('admin');
 
     const deleted = await users.remove({ id: 1 });
-    expect(deleted).toBe(undefined);
+    expect(deleted).toEqual(0);
   });
 });
